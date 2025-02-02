@@ -1,4 +1,7 @@
-## Hi there 👋
+## Hi, I'm Action0358! 👋  
+**"Code. Build. Innovate."**  
+I'm a software engineer passionate about crafting efficient and elegant software solutions.  
+Always learning, always improving.  
 
 <!--
 **Action0358/Action0358** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
@@ -15,7 +18,7 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 -->
 
-## GitHub Stats 📊
+## Recent Activities
 
 [![Summary](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Action0358&theme=github_dark)](https://github.com/Action0358)
 [![Top Langs](https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Action0358&theme=github_dark)](https://github.com/Action0358)
