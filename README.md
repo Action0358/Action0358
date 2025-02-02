@@ -14,3 +14,11 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+
+## GitHub Stats 📊
+
+[![Summary](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Action0358&theme=github_dark)](https://github.com/Action0358)
+[![Top Langs](https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Action0358&theme=github_dark)](https://github.com/Action0358)
+[![Commits](https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Action0358&theme=github_dark)](https://github.com/Action0358)
+[![Stats](https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Action0358&theme=github_dark)](https://github.com/Action0358)
+[![Commits per Day](https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=Action0358&theme=github_dark)](https://github.com/Action0358)

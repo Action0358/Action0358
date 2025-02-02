@@ -1,0 +1,31 @@
+name: Generate GitHub Profile Summary Cards
+
+on:
+  schedule:
+    - cron: "0 0 * * *"  # 毎日0時（UTC）に実行
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Generate Summary Cards
+        uses: vn7n24fzkq/github-profile-summary-cards@release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          USERNAME: Action0358
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add --all
+          git commit -m "Update summary cards" || exit 0
+          git push
