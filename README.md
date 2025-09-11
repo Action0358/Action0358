@@ -10,4 +10,4 @@ Always learning, always improving.
 
 ## GitHub Stats 🚀 
 [![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Action0358&show_icons=true&bg_color=45,4e54c8,8f94fb&title_color=fff&text_color=fff&border_color=fff)](https://github.com/anuraghazra/github-readme-stats)
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Action0358&layout=compact&langs_count=8&bg_color=45,4e54c8,8f94fb&title_color=fff&text_color=fff&border_color=fff)](https://github.com/anuraghazra/github-readme-stats)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Action0358&layout=compact&bg_color=45,4e54c8,8f94fb&title_color=fff&text_color=fff&border_color=fff)](https://github.com/anuraghazra/github-readme-stats)
