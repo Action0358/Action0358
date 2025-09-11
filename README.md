@@ -1,27 +1,13 @@
-## Hi, I'm Action0358! 👋  
-**"Code. Build. Innovate."**  
-I'm a software engineer passionate about crafting efficient and elegant software solutions.  
-Always learning, always improving.  
+## Hi, I'm Action0358! 👋
+[![Hits](https://komarev.com/ghpvc/?username=Action0358&style=flat-square&color=blue)](https://komarev.com/ghpvc/?username=Action0358)
 
-<!--
-**Action0358/Action0358** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+**"Code. Build. Innovate."**
+I'm a software engineer passionate about crafting efficient and elegant software solutions.
+Always learning, always improving.
 
-Here are some ideas to get you started:
+### Skills
+[![My Skills](https://skillicons.dev/icons?i=html,css,js,ts,tailwind,react,nextjs,go,python,django,docker,git,github,cloudflare,supabase,aws)](https://skillicons.dev)
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
-
-## Recent Activities
-
-[![Summary](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Action0358&theme=github_dark)](https://github.com/Action0358)
-[![Top Langs](https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Action0358&theme=github_dark)](https://github.com/Action0358)
-[![Commits](https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Action0358&theme=github_dark)](https://github.com/Action0358)
-[![Stats](https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Action0358&theme=github_dark)](https://github.com/Action0358)
-[![Commits per Day](https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=Action0358&theme=github_dark)](https://github.com/Action0358)
+### GitHub Stats
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Action0358&show_icons=true&theme=github_dark)](https://github.com/anuraghazra/github-readme-stats)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Action0358&layout=compact&theme=github_dark)](https://github.com/anuraghazra/github-readme-stats)
