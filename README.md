@@ -9,7 +9,5 @@ Always learning, always improving.
 [![My Skills](https://skillicons.dev/icons?i=html,css,js,ts,tailwind,react,nextjs,go,python,docker,git,github,cloudflare,supabase,aws)](https://skillicons.dev)
 
 ### GitHub Stats
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Action0358&show_icons=true&theme=github_dark" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Action0358&theme=github_dark" />
-</div>
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Action0358&show_icons=true&theme=github_dark)](https://github.com/anuraghazra/github-readme-stats)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Action0358&theme=github_dark)](https://github.com/anuraghazra/github-readme-stats)
