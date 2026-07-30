@@ -13,7 +13,11 @@ I'm a software engineer passionate about crafting efficient and elegant software
   <img src="https://techstack-generator.vercel.app/ts-icon.svg" width="65" height="65" alt="TypeScript" />
   <img src="https://techstack-generator.vercel.app/react-icon.svg" width="65" height="65" alt="React" />
   <img src="https://techstack-generator.vercel.app/python-icon.svg" width="65" height="65" alt="Python" />
+  <img src="https://techstack-generator.vercel.app/django-icon.svg" width="65" height="65" alt="Django" />
   <img src="https://techstack-generator.vercel.app/docker-icon.svg" width="65" height="65" alt="Docker" />
   <img src="https://techstack-generator.vercel.app/aws-icon.svg" width="65" height="65" alt="AWS" />
-  <img src="https://techstack-generator.vercel.app/django-icon.svg" width="65" height="65" alt="Django" />
 </p>
+
+## GitHub Stats 🚀
+
+![3D contribution graph](https://raw.githubusercontent.com/Action0358/Action0358/main/profile-3d-contrib/profile-night-rainbow.svg)
