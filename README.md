@@ -15,19 +15,5 @@ I'm a software engineer passionate about crafting efficient and elegant software
   <img src="https://techstack-generator.vercel.app/python-icon.svg" width="65" height="65" alt="Python" />
   <img src="https://techstack-generator.vercel.app/docker-icon.svg" width="65" height="65" alt="Docker" />
   <img src="https://techstack-generator.vercel.app/aws-icon.svg" width="65" height="65" alt="AWS" />
-</p>
-
-## GitHub Stats 🚀
-
-<p align="center">
-  <img src="https://streak-stats.demolab.com?user=Action0358&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
-</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Action0358/Action0358/main/profile-summary-card-output/tokyonight/3-stats.svg" alt="Stats" />
-  <img src="https://raw.githubusercontent.com/Action0358/Action0358/main/profile-summary-card-output/tokyonight/1-repos-per-language.svg" alt="Repos per language" />
-</p>
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Action0358/Action0358/main/profile-summary-card-output/tokyonight/2-most-commit-language.svg" alt="Most commit language" />
-  <img src="https://raw.githubusercontent.com/Action0358/Action0358/main/profile-summary-card-output/tokyonight/4-productive-time.svg" alt="Productive time" />
+  <img src="https://techstack-generator.vercel.app/django-icon.svg" width="65" height="65" alt="Django" />
 </p>
