@@ -2,12 +2,11 @@
 
 [![Hits](https://komarev.com/ghpvc/?username=Action0358&style=flat-square&color=blue)](https://komarev.com/ghpvc/?username=Action0358)
 
-## Code. Build. Innovate 🦸
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=1000&color=4E54C8&center=true&vCenter=true&width=600&lines=Code.+Build.+Innovate+%F0%9F%A6%B8;Always+learning%2C+always+improving." alt="Typing SVG" />
 
 I'm a software engineer passionate about crafting efficient and elegant software solutions.
-Always learning, always improving.
 
-## Skills 📊 　
+## Skills 📊
 
 <p>
   <img src="https://techstack-generator.vercel.app/js-icon.svg" width="65" height="65" alt="JavaScript" />
@@ -20,5 +19,15 @@ Always learning, always improving.
 
 ## GitHub Stats 🚀
 
-[![Action0358's GitHub stats](https://github-readme-stats.vercel.app/api?username=Action0358&show_icons=true&bg_color=45,4e54c8,8f94fb&title_color=fff&text_color=fff&border_color=fff)](https://github.com/anuraghazra/github-readme-stats)
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Action0358&layout=compact&bg_color=45,4e54c8,8f94fb&title_color=fff&text_color=fff&border_color=fff)](https://github.com/anuraghazra/github-readme-stats)
+<p align="center">
+  <img src="https://streak-stats.demolab.com?user=Action0358&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Action0358/Action0358/main/profile-summary-card-output/tokyonight/3-stats.svg" alt="Stats" />
+  <img src="https://raw.githubusercontent.com/Action0358/Action0358/main/profile-summary-card-output/tokyonight/1-repos-per-language.svg" alt="Repos per language" />
+</p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Action0358/Action0358/main/profile-summary-card-output/tokyonight/2-most-commit-language.svg" alt="Most commit language" />
+  <img src="https://raw.githubusercontent.com/Action0358/Action0358/main/profile-summary-card-output/tokyonight/4-productive-time.svg" alt="Productive time" />
+</p>
