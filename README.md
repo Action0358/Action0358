@@ -4,9 +4,9 @@
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=1000&color=4E54C8&center=true&vCenter=true&width=600&lines=Code.+Build.+Innovate+%F0%9F%A6%B8;Always+learning%2C+always+improving." alt="Typing SVG" />
 
-I'm a software engineer passionate about crafting efficient and elegant software solutions.
+I'm a web engineer passionate about crafting efficient and elegant software solutions.
 
-## Skills 📊
+# Skills 📊
 
 <p>
   <img src="https://techstack-generator.vercel.app/js-icon.svg" width="65" height="65" alt="JavaScript" />
@@ -18,6 +18,6 @@ I'm a software engineer passionate about crafting efficient and elegant software
   <img src="https://techstack-generator.vercel.app/aws-icon.svg" width="65" height="65" alt="AWS" />
 </p>
 
-## GitHub Stats 🚀
+# GitHub Stats 🚀
 
 ![3D contribution graph](https://raw.githubusercontent.com/Action0358/Action0358/main/profile-3d-contrib/profile-night-rainbow.svg)
