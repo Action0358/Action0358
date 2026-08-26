@@ -1,2 +1,5 @@
-[![Profile](./dark_mode.svg#gh-dark-mode-only)](https://github.com/Action0358)
-[![Profile](./light_mode.svg#gh-light-mode-only)](https://github.com/Action0358)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./dark_mode.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./light_mode.svg">
+  <img alt="Action0358 — web engineer, Tokyo" src="./light_mode.svg">
+</picture>
