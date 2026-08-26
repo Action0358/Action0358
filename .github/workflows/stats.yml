@@ -1,0 +1,45 @@
+name: Profile Stats
+
+on:
+  schedule: # 03:10 JST == 18:10 UTC
+    - cron: "10 18 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/scripts/build_svg.py"
+      - "assets/ascii-art.txt"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-stats
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: Build SVGs
+        env:
+          # classic PAT with repo + read:user, so private repos are counted.
+          # falls back to GITHUB_TOKEN (public repos only) if unset.
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
+          PROFILE_USER: ${{ github.repository_owner }}
+        run: python .github/scripts/build_svg.py
+      - name: Commit & push
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add light_mode.svg dark_mode.svg
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: refresh profile stats"
+            git pull --rebase --autostash
+            git push
+          fi
