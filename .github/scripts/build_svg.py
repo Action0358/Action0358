@@ -47,6 +47,11 @@ THEMES = {
 # --- data -----------------------------------------------------------------
 def rest(path, **params):
     r = requests.get(f"{API}{path}", headers=HEAD, params=params, timeout=30)
+    if r.status_code in (401, 403):
+        sys.exit(
+            f"{r.status_code} on {path}: the token is missing, expired, or "
+            "lacks Contents/Metadata read on all repositories"
+        )
     r.raise_for_status()
     return r.json()
 
@@ -54,7 +59,9 @@ def rest(path, **params):
 def profile():
     """Everything here is REST, not GraphQL, so a read-only fine-grained
     token works. GraphQL still requires a classic token."""
-    me = rest("/user")
+    # the public user endpoint: created_at and followers are public data, and
+    # /user needs an account permission a repo-scoped token does not carry
+    me = rest(f"/users/{USER}")
     repos, page = [], 1
     while True:
         batch = rest("/user/repos", affiliation="owner", per_page=100, page=page)
