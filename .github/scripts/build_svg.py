@@ -3,9 +3,9 @@
 Pulls live counts from the GitHub API and lays them out neofetch-style next to
 the ASCII portrait in assets/ascii-art.txt.
 
-Needs a token in ACCESS_TOKEN (classic PAT, scopes: repo + read:user) so that
-private repositories are included. Falls back to GITHUB_TOKEN, which only sees
-public repositories.
+Needs a token in ACCESS_TOKEN so that private repositories are counted. A
+read-only fine-grained PAT is enough: all repositories, Contents + Metadata
+read. Falls back to GITHUB_TOKEN, which only sees public repositories.
 """
 
 import os
@@ -23,7 +23,7 @@ ART = ROOT / "assets" / "ascii-art.txt"
 USER = os.environ.get("PROFILE_USER", "Action0358")
 TOKEN = os.environ.get("ACCESS_TOKEN") or os.environ.get("GITHUB_TOKEN", "")
 API = "https://api.github.com"
-HEAD = {"Authorization": f"bearer {TOKEN}", "Accept": "application/vnd.github+json"}
+HEAD = {"Authorization": f"Bearer {TOKEN}", "Accept": "application/vnd.github+json"}
 
 # --- layout metrics (Consolas 16px, 20px leading) -------------------------
 CHAR_W = 8.93
@@ -45,43 +45,29 @@ THEMES = {
 
 
 # --- data -----------------------------------------------------------------
-def graphql(query, **variables):
-    r = requests.post(
-        f"{API}/graphql",
-        json={"query": query, "variables": variables},
-        headers=HEAD,
-        timeout=30,
-    )
+def rest(path, **params):
+    r = requests.get(f"{API}{path}", headers=HEAD, params=params, timeout=30)
     r.raise_for_status()
-    body = r.json()
-    if "errors" in body:
-        raise RuntimeError(body["errors"])
-    return body["data"]
+    return r.json()
 
 
 def profile():
-    data = graphql(
-        """
-        query($login: String!) {
-          user(login: $login) {
-            createdAt
-            followers { totalCount }
-            repositories(ownerAffiliations: OWNER, isFork: false, first: 100) {
-              totalCount
-              nodes { name stargazerCount isPrivate }
-            }
-          }
-        }
-        """,
-        login=USER,
-    )["user"]
-    repos = data["repositories"]["nodes"]
+    """Everything here is REST, not GraphQL, so a read-only fine-grained
+    token works. GraphQL still requires a classic token."""
+    me = rest("/user")
+    repos, page = [], 1
+    while True:
+        batch = rest("/user/repos", affiliation="owner", per_page=100, page=page)
+        repos += [r for r in batch if not r["fork"]]
+        if len(batch) < 100:
+            break
+        page += 1
     return {
-        "created": datetime.fromisoformat(data["createdAt"].replace("Z", "+00:00")),
-        "followers": data["followers"]["totalCount"],
-        "repos": data["repositories"]["totalCount"],
-        "private": sum(1 for r in repos if r["isPrivate"]),
-        "stars": sum(r["stargazerCount"] for r in repos),
+        "created": datetime.fromisoformat(me["created_at"].replace("Z", "+00:00")),
+        "followers": me["followers"],
+        "repos": len(repos),
+        "private": sum(1 for r in repos if r["private"]),
+        "stars": sum(r["stargazers_count"] for r in repos),
         "names": [r["name"] for r in repos],
     }
 

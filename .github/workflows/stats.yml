@@ -28,8 +28,9 @@ jobs:
       - run: pip install requests
       - name: Build SVGs
         env:
-          # classic PAT with repo + read:user, so private repos are counted.
-          # falls back to GITHUB_TOKEN (public repos only) if unset.
+          # fine-grained PAT (all repos, Contents + Metadata: read-only) so
+          # private repos are counted. falls back to GITHUB_TOKEN, which only
+          # sees public repos.
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
           PROFILE_USER: ${{ github.repository_owner }}
         run: python .github/scripts/build_svg.py
