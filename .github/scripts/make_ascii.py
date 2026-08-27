@@ -1,51 +1,66 @@
-"""Regenerate assets/ascii-art.txt from the GitHub mark.
+"""Regenerate assets/ascii-art.txt from assets/octocat.png.
 
-The mark is a filled disc with the cat knocked out of it, so sampling ink
-directly gives you the disc, not the Octocat. A flood fill will not isolate
-the cat either -- its legs break the bottom of the circle, so the interior is
-open to the outside. Filling each row between its leftmost and rightmost ink
-recovers the disc, and subtracting the ink leaves the cat.
+The source is shaded artwork on a white background, not a flat logo, so the
+conversion keeps its tones: the body lands on dense characters, the face on
+light ones. Two things need handling first -- the background is white rather
+than transparent, and the cyan ground shadow is decoration we don't want.
 
-  curl -sL https://cdn.jsdelivr.net/npm/simple-icons@13/icons/github.svg \
-    | sed 's/<svg /<svg fill="black" /' > logo.svg
-  chrome --headless --screenshot=logo.png --window-size=900,900 \
-    --default-background-color=00000000 file://$PWD/logo.svg
-  python make_ascii.py logo.png 42 > ../../assets/ascii-art.txt
+  python make_ascii.py 46 > ../../assets/ascii-art.txt
 
-For a logo that is a positive shape rather than a knockout, pass --solid to
-skip the subtraction. Width is in characters; rows follow the aspect ratio.
+Width is in characters; rows follow the aspect ratio. Raising DETAIL sharpens
+the face at the cost of noise; raising FLOOR keeps light areas from dropping
+out into blank space, which would leave the head looking hollow.
 """
 
 import sys
+from pathlib import Path
 
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageFilter
 
+SRC = Path(__file__).resolve().parents[2] / "assets" / "octocat.png"
+COLS = int(sys.argv[1]) if len(sys.argv) > 1 else 46
+DETAIL = 0.55
+FLOOR = 0.42
 CELL = 0.44  # character width / line height for Consolas 16px on 20px leading
 RAMP = "  .:~=+*#%@"  # light -> dark
 
-args = [a for a in sys.argv[1:] if not a.startswith("--")]
-SRC, COLS = args[0], int(args[1])
-SOLID = "--solid" in sys.argv
+im = Image.open(SRC).convert("RGBA")
+im = im.resize((im.width * 3, im.height * 3), Image.LANCZOS)
+a = np.asarray(im, dtype=np.float32)
+R, G, B = a[..., 0], a[..., 1], a[..., 2]
 
-ink = np.asarray(Image.open(SRC).convert("RGBA"))[..., 3] > 128
+cyan = (B > R + 40) & (G > R + 40)  # the ground shadow
+white = (R > 232) & (G > 232) & (B > 232)  # the backdrop
+mask = ~cyan & ~white
 
-if SOLID:
-    shape = ink
-else:
-    filled = np.logical_and(
-        np.maximum.accumulate(ink, axis=1),
-        np.maximum.accumulate(ink[:, ::-1], axis=1)[:, ::-1],
-    )
-    shape = filled & ~ink
-
-ys, xs = np.nonzero(shape)
-box = Image.fromarray((shape * 255).astype(np.uint8)).crop(
-    (xs.min(), ys.min(), xs.max() + 1, ys.max() + 1)
-)
-w, h = box.size
+ys, xs = np.nonzero(mask)
+box = tuple(int(v) for v in (xs.min(), ys.min(), xs.max() + 1, ys.max() + 1))
+w, h = box[2] - box[0], box[3] - box[1]
 rows = max(1, round(COLS * (h / w) * CELL))
 
-v = np.asarray(box.resize((COLS, rows), Image.LANCZOS), dtype=np.float32) / 255.0
-idx = (np.clip(v * 1.15, 0, 1) * (len(RAMP) - 1)).round().astype(int)
+gray = a[..., :3].mean(axis=2)
+lo, hi = np.percentile(gray[mask], 2), np.percentile(gray[mask], 98)
+tone = np.clip((hi - gray) / max(hi - lo, 1e-3), 0, 1)
+
+blur = np.asarray(
+    Image.fromarray(gray.astype(np.uint8)).filter(ImageFilter.GaussianBlur(w / 55)),
+    dtype=np.float32,
+)
+detail = np.clip(0.5 + (blur - gray) / 70.0, 0, 1)
+
+val = np.clip(0.80 * tone + DETAIL * (detail - 0.5) * 2, 0, 1)
+val = np.where(mask, np.maximum(val, FLOOR), 0.0)
+
+
+def shrink(x):
+    img = Image.fromarray((np.clip(x, 0, 1) * 255).astype(np.uint8))
+    return np.asarray(img.crop(box).resize((COLS, rows), Image.BOX), np.float32) / 255
+
+
+# scale value by coverage so partly-covered edge cells don't read as solid
+v, cover = shrink(val), shrink(mask.astype(np.float32))
+v = np.where(cover > 0.25, np.clip(v / np.maximum(cover, 0.4), 0, 1), 0.0)
+
+idx = (v * (len(RAMP) - 1)).round().astype(int)
 print("\n".join("".join(RAMP[i] for i in r).rstrip() for r in idx))
