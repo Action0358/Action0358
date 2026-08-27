@@ -30,6 +30,7 @@ CHAR_W = 8.93
 LINE_H = 20
 PAD_X = 15
 GAP = 34
+INDENT = 5  # characters of breathing room to the left of the art
 COL_W = 74  # characters available to the right-hand column
 
 THEMES = {
@@ -209,7 +210,8 @@ def build_lines(p, commits, add, dele):
 def render(theme, art, lines):
     t = THEMES[theme]
     art_cols = max(len(a) for a in art)
-    col_x = PAD_X + int(art_cols * CHAR_W) + GAP
+    art_x = PAD_X + int(INDENT * CHAR_W)
+    col_x = art_x + int(art_cols * CHAR_W) + GAP
     width = col_x + int(COL_W * CHAR_W) + PAD_X
     height = max(len(art), len(lines)) * LINE_H + 2 * LINE_H
 
@@ -227,12 +229,12 @@ def render(theme, art, lines):
         "text, tspan {white-space: pre;}",
         "</style>",
         f'<rect width="{width}px" height="{height}px" fill="{t["bg"]}" rx="15"/>',
-        f'<text x="{PAD_X}" y="{LINE_H + 10}" fill="{t["fg"]}">',
+        f'<text x="{art_x}" y="{LINE_H + 10}" fill="{t["fg"]}">',
     ]
     off = max(0, (len(lines) - len(art)) // 2)  # centre a short art block
     for i, row in enumerate(art):
         out.append(
-            f'<tspan x="{PAD_X}" y="{(i + 1 + off) * LINE_H + 10}">{escape(row)}</tspan>'
+            f'<tspan x="{art_x}" y="{(i + 1 + off) * LINE_H + 10}">{escape(row)}</tspan>'
         )
     out.append("</text>")
     out.append(f'<text x="{col_x}" y="{LINE_H + 10}" fill="{t["fg"]}">')
